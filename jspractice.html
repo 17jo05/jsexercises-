@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>JS Exercise</title>
+<script type="text/javascript">
+
+</script>	
+</head>
+<body>
+<script type="text/javascript">
+
+//1. Write a JavaScript program to display the current day and time in the following format.
+//Sample Output : Today is : Friday. //Current time is : 4 PM : 50 : 22
+var d = new Date();
+
+daysofweek = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
+//var s = new Date();
+
+mins =d.getMinutes();
+sec =  d.getSeconds();
+hours = d.getHours();
+anoon = hours- 12 +" PM";
+noon = hours + " PM";
+midnite = anoon +" AM";
+morning =  + " AM";
+	
+
+	if (hours>12)  {
+		console.log(anoon);
+}
+
+	 if (hours===12 ) {
+			console.log(noon);
+}
+	if (hours=== 24) {
+			console.log(midnight);
+	}
+	if(hours < 12) {
+		console.log(morning);
+}
+
+
+
+
+document.write("Today is : "+daysofweek[d.getDay()-1]+"."+"<br>");
+document.write(" Current time is : "+(anoon || noon || midnite || morning)  +" : "+mins+" : "+ sec );
+
+//console.log("Today is :" +daysofweek[d.getDay()-1]+".");
+//console.log(" Current time is : ")
+
+
+
+
+
+
+</script>		
+</body>
+</html>
