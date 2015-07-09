@@ -1,0 +1,131 @@
+<html>
+			<head>
+				<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+			
+			<!-- <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+			<meta content="utf-8" http-equiv="encoding"> -->
+				<link rel="stylesheet" type="text/css" href="countdown.css">
+			
+				<script language="JavaScript">
+			
+			
+			//This function calculates the time difference between system date and users selecsted event date and time
+				function calculateDifference(){
+					var date = new Date();
+					var scheduledDate = document.getElementById("mDate").value;//get user entered date
+					
+					
+					var scheduledTime = document.getElementById("mTime").value; //get user entered time
+					
+					if(scheduledDate=='' || scheduledTime==''){
+					alert("Select Date and Time for Event");//if user enters date already passed
+					return false;
+				}
+			
+			var concatedDate=scheduledDate+" "+scheduledTime;
+			
+			var dateSelect=new Date(concatedDate);
+			
+			var diff=dateSelect-date;
+			
+			if(diff=<0){
+			alert("Please Select Future Event Date");
+			return false;
+			}
+			
+			var minute = 1000 * 60;
+			   var hour = minute * 60;
+			    var day = hour * 24;
+				
+				 var days = Math.floor(diff / day);
+			       var hours = Math.floor((diff % day) / hour);
+			       var minutes = Math.floor((diff % hour) / minute);
+			       var seconds = Math.floor((diff % minute) / 1000);
+				   
+				    document.getElementById("countDays").value=days;
+			       document.getElementById("countHours").value=hours;
+			       document.getElementById("countMinutes").value=minutes;
+			       document.getElementById("countSeconds").value=seconds;
+				   timer = setInterval('calculateDifference()', 1000);
+				   
+			}
+			
+			</script>
+			<style type="text/css">
+			h1{color: blue;text-align: center;padding: 40px;background-color:gold;}
+			td{padding: 5px;color: blue;font-weight: bolder;}
+			h3{color: Blue;}
+			td{}
+
+
+
+
+			</style>			
+
+
+
+			</head>
+<body>
+
+<header>
+<h1>CountDown Web Clock</h1>
+</header>
+
+<noscript><div class="alert-box js-required"><h3>Requires JavaScript, please enable JavaScript for the webclock </h3></div></noscript>
+<div id = "container">
+
+<form name ="calcform">
+
+<div id="info">
+<h2>User Input based Count Down Timer</h2>
+<p><h4>Select Date and Time - Press <i><u> Set</u> </i> Button.<h4></p>
+
+<p>
+<table >
+<colgroup span='2' width='50' />
+<tr><td>Enter Date</td> <td>Enter Time</td></tr>
+
+<tr>
+<td><input type="date" name="mDate" id="mDate" ></td>
+<td><input type="time" name="mTime" id="mTime"> </td>
+<td><input type="button" value="Set" onclick= "calculateDifference()" id="setEvent" >
+<input type="reset" value="Reset" class="btn" tabindex="3">
+ </td>
+
+</tr>
+<br>
+<tr>
+</p>
+<table>
+
+<p>
+<table>
+<h3>Remaining Time For Event to Occur is:</h3>
+<colgroup span='4' width='50' />
+<tr>
+
+<td><input type="text" size="2"  id="countDays" readonly="readonly" value=""  /></td>
+<td><input type="text" size="2"  id="countHours" readonly="readonly" value=""  /></td>
+<td><input type="text" size="2"  id="countMinutes" readonly="readonly" value=""  /></td>
+<td><input type="text" size="2"  id="countSeconds" readonly="readonly" value=""  /></td>
+</tr>
+
+<tr>
+<td> Days</td>
+<td> Hour </td>
+<td> Minutes </td>
+<td> Seconds</td>
+</tr>
+
+<table>
+</p>
+
+		
+</div>
+
+<div id="calc2">
+</div>
+<footer><small>Note: Input types, not supported by old web browsers, will behave as input type text.</small></footer>
+</div>
+</body>
+</html>
